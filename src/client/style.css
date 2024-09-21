@@ -1,0 +1,668 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@600&display=swap');
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(20, 20, 20);
+    font-family: "Exo 2", "Helvetica";
+    font-size: 22px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+@keyframes header {
+    0% {
+        opacity: 0;
+        color: rgb(255, 245, 245);
+        text-shadow: 0 0 0px #fff;
+    }
+    100% {
+        opacity: 1;
+        color: rgb(250, 240, 240);
+        text-shadow: 0 0 10px #fff;
+    }
+}
+h1 {
+    color: rgb(250, 250, 250);
+    text-shadow: 0 0 10px #fff;
+    animation: header 2s linear 1;
+    font-family: "Exo 2";
+    line-height: 50px;
+    margin-bottom: 0px;
+}
+h2{
+    color: rgb(250, 250, 250);
+    text-shadow: 0 0 10px #fff;
+    animation: header 2s linear 1;
+    font-family: "Exo 2";
+    line-height: 30px;
+    font-size: 20px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+input[type="text"],
+input[type="number"] {
+    padding: 1px;
+    font-size: 25px;
+    color: #1f1633;
+    font-family: "Exo 2", "Helvetica";
+
+    background-color: rgba(241, 239, 239, 0.575);
+    text-align: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+    text-shadow: 1px 1px 2px black, 0 0 12px grey, 0 0 3px grey;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+
+    outline: none;
+    border: none;
+}
+button {
+    width:17vw;
+    height: 4vw;
+    font-size: 2vw;
+    font-family: "Exo 2", "Helvetica";
+    color: rgb(250, 250, 250);
+    background-color: rgb(50, 50, 50);
+    box-shadow: 0 0 30px rgb(50, 50, 50);
+    outline: none;
+    border: none;
+    animation: fadein 4s linear 1;
+    transition: 0.5s ease;
+    border-radius: 4px;
+}
+button:hover {
+    cursor: pointer;
+    background-color: rgb(80, 80, 80);
+}
+.playDiv {
+    margin-top: 10px;
+}
+.menu, .joinDiv, .totemDiv, .createDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: all 0.1s linear;
+    box-shadow: inset 0 0 10vw grey;
+}
+canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
+.game {
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  
+  justify-content: center;
+  align-items: center;
+}
+.serverList {
+  border-radius: 20px;
+  text-align: center;
+  width: 80vw;
+  height: 60vh;
+  background-color: rgb(100, 100, 100);
+  overflow: auto;
+}
+.totemServerList {
+  border-radius: 20px;
+  text-align: center;
+  width: 80vw;
+  height: 60vh;
+  background-color: rgb(100, 100, 100);
+  overflow: auto;
+}
+.serverBox {
+    width: 85%;
+    height: 6vh;
+    background-color: rgb(55, 55, 55);
+    color: rgb(200, 200, 200);
+    font-size: 4vh;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    transition: 1s all;
+    padding: 5px;
+    font-family: "Exo 2", "Helvetica";
+}
+.heroBox {
+  width: 40%;
+  height: auto;
+  display: -webkit-inline-flex;
+  background-color: rgb(55, 55, 55);
+  font-size: 3vh;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  transition: 1s all;
+  padding: 5px;
+  font-family: "Exo 2", "Helvetica";
+}
+
+/*.heroDesc {
+	position: absolute;
+}*/
+
+.serverBox:hover {
+    background-color: rgb(80, 80, 80);
+    cursor: pointer;
+}
+.private {
+  background-color: rgb(50, 50, 100);
+}
+.private:hover {
+    background-color: rgb(75, 75, 110);
+}
+.permanent {
+  background-color: rgb(20, 20, 20);
+}
+.magmaxDiv {
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  background-color: rgb(200, 0, 0);
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.magmaxDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+.ramesesDiv {
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  background-color: #989b4a;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.ramesesDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+.parvDiv {
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  background-color: #9042e3;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.parvDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+.ptahDiv {
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  background-color: #665333;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.ptahDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+.jotunnDiv {
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  background-color: #5cacff;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.jotunnDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+.kindleDiv {
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #ed6f3e;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.kindleDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+.neuidDiv {
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #0d6d82;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.neuidDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+.orbitalDiv {
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #510a6e;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.orbitalDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+.cimexDiv {
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #777777;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.cimexDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+.janusDiv {
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #8ad1bb;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(20, 20, 20);
+  overflow: hidden;
+}
+.janusDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+.turrDiv {
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #bd8b0d;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.turrDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+.gunslingerDiv {
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #2b2b2b;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.gunslingerDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+
+.thornstickDiv {
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #6ba72a;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.thornstickDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+
+.warperDiv {
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #8d3dad;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.warperDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+.flylieDiv {
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #de5721;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.flylieDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+
+.autoDiv {
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: rgb(128,128,128);
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.autoDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+
+.proDiv {
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #0c0e4a;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.proDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+
+.zenithDiv {
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #443259;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.zenithDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+
+.necroDiv {
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #1c301c;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.necroDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+
+.rogueDiv {
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #d64531;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.rogueDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+
+.secretDiv {
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: rgba(0, 0, 0, 0);
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgba(20, 20, 20, 0);
+  color: rgba(200, 200, 200, 0);
+  overflow: hidden;
+}
+
+.redDiv {
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  background-color: #9A0000;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.redDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+
+.blueDiv {
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  background-color: #00009A;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.blueDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+
+.gameDiv {
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  background-color: #009A00;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.gameDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+
+.magicDiv {
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  background-color: #9A9A9A;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.magicDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+
+.fortDiv {
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  background-color: #6f531f;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.fortDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+
+.projDiv {
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  background-color: #35827c;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(20, 20, 20);
+  color: rgb(200, 200, 200);
+  overflow: hidden;
+}
+.projDiv:hover {
+  bottom: auto;
+  overflow: visible;
+  z-index: 1;
+}
+
+.permanent:hover {
+  background-color: rgb(35, 35, 35);
+}
+#chatUI {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    border: none;
+    outline: none;
+}
+#chat::-webkit-scrollbar {
+    display: none;
+}
+@keyframes rainbow {
+    0% {
+        border-color: hsl(0, 100%, 50%);
+    }
+    14% {
+        border-color: hsl(30, 100%, 50%);
+    }
+    28% {
+        border-color: hsl(60, 100%, 50%);
+    }
+    42% {
+        border-color: hsl(120, 100%, 50%);
+    }
+    56% {
+        border-color: hsl(240, 100%, 50%);
+    }
+    70% {
+        border-color: hsl(280, 100%, 50%);
+    }
+    84% {
+        border-color: hsl(320, 100%, 50%);
+    }
+    100% {
+        border-color: hsl(255, 100%, 50%);
+    }
+}
+#chat {
+  display: block;
+  width: 20vw;
+  height: 15vw;
+  font-size: 1vw;
+  background-color: rgba(100, 100, 100, 0.6);
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-y: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+}
+#chatInput {
+  box-sizing: border-box;
+  border: 2px solid;
+  animation: rainbow 5s infinite alternate;
+  display: block;
+  outline: none;
+  width: 20vw;
+  font-family: "Exo 2", "Helvetica";
+  font-size: 1vw;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.chatMsg {
+  color: white;
+}
